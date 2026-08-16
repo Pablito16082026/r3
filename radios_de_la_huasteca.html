@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radios de la Huasteca | San Luis Potosí e Hidalgo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        huasteca: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b'
+                        },
+                        sunshine: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* Animated Soundwaves Equalizer */
+        .eq-bar { animation: bounceEq 0.7s ease-in-out infinite alternate; }
+        .eq-bar:nth-child(1) { animation-delay: 0.1s; }
+        .eq-bar:nth-child(2) { animation-delay: 0.3s; }
+        .eq-bar:nth-child(3) { animation-delay: 0.5s; }
+        .eq-bar:nth-child(4) { animation-delay: 0.2s; }
+        .eq-bar:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes bounceEq {
+            0% { height: 15%; }
+            100% { height: 100%; }
+        }
+
+        /* Banner Slide Transitions */
+        .banner-slide {
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        /* Chat Bubbles */
+        .chat-bubble-user { border-radius: 18px 18px 2px 18px; }
+        .chat-bubble-other { border-radius: 18px 18px 18px 2px; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-white">
+
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+            
+            <!-- Branding -->
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-amber-400 flex items-center justify-center text-white shadow-lg shadow-emerald-600/20">
+                    <i class="fa-solid fa-radio text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-base sm:text-lg text-slate-900 leading-none">Radios de la Huasteca</h1>
+                    <span class="text-[11px] font-bold text-emerald-600 flex items-center gap-1.5 mt-0.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                        San Luis Potosí & Vecinos (Hidalgo)
+                    </span>
+                </div>
+            </div>
+
+            <!-- Search & Filters -->
+            <div class="hidden md:flex items-center gap-3 flex-1 max-w-md mx-6">
+                <div class="relative w-full">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+                    <input type="text" id="input-search" placeholder="Buscar radio, municipio, género..." class="w-full bg-slate-100 border border-slate-200 rounded-2xl pl-9 pr-4 py-2 text-xs font-semibold text-slate-800 focus:outline-none focus:bg-white focus:border-emerald-500 transition-all shadow-inner">
+                </div>
+            </div>
+
+            <!-- Quick Action Toggles -->
+            <div class="flex items-center gap-2">
+                <button id="btn-open-chat" class="bg-amber-400 hover:bg-amber-300 text-slate-900 font-extrabold px-3.5 py-2 rounded-2xl text-xs flex items-center gap-2 shadow-md transition-all">
+                    <i class="fa-solid fa-comments text-sm"></i>
+                    <span class="hidden sm:inline">Chat SLP & Hidalgo</span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-8">
+
+        <!-- ================= Mercado Libre Style Banner Slider ================= -->
+        <section class="relative overflow-hidden rounded-3xl bg-slate-900 shadow-xl border border-slate-200">
+            <!-- Carousel Slides Container -->
+            <div id="carousel-container" class="relative min-h-[220px] sm:min-h-[280px] md:min-h-[320px] w-full flex items-center">
+                
+                <!-- Slide 1 -->
+                <div class="banner-slide absolute inset-0 opacity-100 flex items-center bg-cover bg-center" style="background-image: linear-gradient(to right, rgba(6, 78, 59, 0.92), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&auto=format&fit=crop&q=80');">
+                    <div class="p-6 sm:p-10 max-w-xl text-white space-y-3">
+                        <span class="bg-amber-400 text-slate-900 text-[10px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider shadow">
+                            ¡Bienvenido a La Huasteca!
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">Música y Noticias de San Luis Potosí e Hidalgo</h2>
+                        <p class="text-xs sm:text-sm text-slate-200 font-medium">Sintoniza en vivo la mayor variedad de sones, huapangos y cultura regional.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="banner-slide absolute inset-0 opacity-0 flex items-center bg-cover bg-center" style="background-image: linear-gradient(to right, rgba(180, 83, 9, 0.92), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&auto=format&fit=crop&q=80');">
+                    <div class="p-6 sm:p-10 max-w-xl text-white space-y-3">
+                        <span class="bg-emerald-400 text-slate-900 text-[10px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider shadow">
+                            Tradición Sonera
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">Tríos de Huapango & Fiesta Regional</h2>
+                        <p class="text-xs sm:text-sm text-slate-200 font-medium">Transmitiendo la identidad viva de Ciudad Valles, Tamazunchale y municipios vecinos.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="banner-slide absolute inset-0 opacity-0 flex items-center bg-cover bg-center" style="background-image: linear-gradient(to right, rgba(13, 148, 136, 0.92), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=1200&auto=format&fit=crop&q=80');">
+                    <div class="p-6 sm:p-10 max-w-xl text-white space-y-3">
+                        <span class="bg-rose-400 text-slate-900 text-[10px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider shadow">
+                            Unión Regional
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">San Luis Potosí y sus Vecinos de Hidalgo</h2>
+                        <p class="text-xs sm:text-sm text-slate-200 font-medium">Un puente sonoro entre Xochiatipán, Huejutla y la Huasteca Potosina.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Slide Navigation Controls -->
+            <button id="btn-prev-slide" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 hover:bg-white text-white hover:text-slate-900 backdrop-blur-md flex items-center justify-center transition-all shadow">
+                <i class="fa-solid fa-chevron-left text-sm"></i>
+            </button>
+            <button id="btn-next-slide" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 hover:bg-white text-white hover:text-slate-900 backdrop-blur-md flex items-center justify-center transition-all shadow">
+                <i class="fa-solid fa-chevron-right text-sm"></i>
+            </button>
+
+            <!-- Slide Indicators -->
+            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2" id="carousel-dots">
+                <button class="w-3 h-3 rounded-full bg-amber-400 transition-all" data-slide="0"></button>
+                <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all" data-slide="1"></button>
+                <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all" data-slide="2"></button>
+            </div>
+        </section>
+
+        <section class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-3xl border border-slate-200/80 shadow-sm">
+            
+            <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mr-2 flex-shrink-0">
+                    <i class="fa-solid fa-filter mr-1"></i> Filtrar:
+                </span>
+                
+                <button data-region="all" class="filter-region-btn active-region text-xs font-extrabold px-4 py-2 rounded-2xl bg-emerald-600 text-white shadow-md shadow-emerald-600/20 transition-all flex-shrink-0">
+                    Todas las Radios
+                </button>
+                <button data-region="slp" class="filter-region-btn text-xs font-bold px-4 py-2 rounded-2xl text-slate-600 hover:bg-slate-100 transition-all flex-shrink-0">
+                    San Luis Potosí
+                </button>
+                <button data-region="hgo" class="filter-region-btn text-xs font-bold px-4 py-2 rounded-2xl text-slate-600 hover:bg-slate-100 transition-all flex-shrink-0">
+                    Hidalgo (Vecinos)
+                </button>
+            </div>
+
+            <div class="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-xl self-end sm:self-auto" id="station-count-indicator">
+                6 Estaciones Disponibles
+            </div>
+
+        </section>
+
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h3 class="text-lg font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                    <i class="fa-solid fa-broadcast-tower text-emerald-600"></i>
+                    Emisoras de la Huasteca
+                </h3>
+            </div>
+
+            <!-- Dynamic Stations Grid -->
+            <div id="stations-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Rendered dynamically via MVC View -->
+            </div>
+        </section>
+
+    </main>
+
+    <div id="player-modal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-200 transform scale-95 transition-all duration-300 space-y-0" id="player-modal-card">
+            
+            <!-- Modal Header / Image Container Cover -->
+            <div class="relative h-48 sm:h-56 bg-slate-800 overflow-hidden">
+                <img id="modal-station-img" src="" alt="Radio Cover" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                
+                <button id="btn-close-modal" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/50 hover:bg-black text-white flex items-center justify-center backdrop-blur-md transition-all">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+
+                <div class="absolute bottom-4 left-4 right-4 text-white">
+                    <span id="modal-station-badge" class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-500 text-white shadow-md inline-block mb-1">
+                        San Luis Potosí
+                    </span>
+                    <h3 id="modal-station-name" class="text-xl font-extrabold leading-tight">Nombre de Radio</h3>
+                    <p id="modal-station-location" class="text-xs text-slate-300 font-medium">Ubicación</p>
+                </div>
+            </div>
+
+            <!-- Player Controls Box Body -->
+            <div class="p-6 space-y-6 bg-white">
+                
+                <!-- Equalizer Graphic & Status -->
+                <div class="flex items-center justify-between bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="text-xs font-extrabold text-slate-800" id="modal-status-text">Listo para reproducir</span>
+                    </div>
+
+                    <div class="flex items-end gap-1 h-6" id="modal-equalizer">
+                        <span class="w-1.5 bg-emerald-500 rounded-t eq-bar h-2"></span>
+                        <span class="w-1.5 bg-amber-500 rounded-t eq-bar h-5"></span>
+                        <span class="w-1.5 bg-rose-500 rounded-t eq-bar h-3"></span>
+                        <span class="w-1.5 bg-teal-500 rounded-t eq-bar h-6"></span>
+                        <span class="w-1.5 bg-sky-500 rounded-t eq-bar h-4"></span>
+                    </div>
+                </div>
+
+                <!-- Main Audio Play/Pause Big Button -->
+                <div class="flex items-center justify-center gap-6">
+                    <button id="btn-modal-play" class="w-20 h-20 rounded-3xl bg-gradient-to-tr from-emerald-600 to-teal-500 hover:from-amber-400 hover:to-amber-500 text-white hover:text-slate-900 font-extrabold flex items-center justify-center shadow-xl shadow-emerald-600/30 hover:shadow-amber-400/40 transition-all text-2xl group">
+                        <i class="fa-solid fa-play ml-1" id="modal-play-icon"></i>
+                    </button>
+                </div>
+
+                <!-- Volume Bar -->
+                <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-2xl border border-slate-100">
+                    <button id="btn-modal-mute" class="text-slate-600 hover:text-emerald-600 transition-colors">
+                        <i class="fa-solid fa-volume-high text-sm" id="modal-mute-icon"></i>
+                    </button>
+                    <input type="range" id="modal-volume-slider" min="0" max="1" step="0.05" value="0.8" class="w-full accent-emerald-600 cursor-pointer">
+                </div>
+
+                <!-- Station Genre & Details -->
+                <p class="text-xs text-slate-500 font-medium text-center leading-relaxed" id="modal-station-genre">
+                    Género y programación especial
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="chat-drawer" class="fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-white shadow-2xl border-l border-slate-200 transform translate-x-full transition-transform duration-300 flex flex-col">
+        
+        <!-- Chat Header -->
+        <div class="p-4 bg-slate-900 text-white flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-amber-400 text-slate-900 flex items-center justify-center font-extrabold text-sm">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+                <div>
+                    <h3 class="font-extrabold text-sm">Chat La Huasteca</h3>
+                    <p class="text-[10px] text-emerald-400 font-semibold">San Luis Potosí & Hidalgo Vecinos</p>
+                </div>
+            </div>
+            <button id="btn-close-chat" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+        </div>
+
+        <!-- Chat Room Channels -->
+        <div class="p-2 bg-slate-100 border-b border-slate-200">
+            <div class="grid grid-cols-3 gap-1" id="chat-channel-tabs">
+                <button data-channel="slp" class="channel-btn active-channel py-1.5 rounded-xl font-extrabold text-[10px] bg-white text-slate-900 shadow-sm text-center">
+                    SLP
+                </button>
+                <button data-channel="hidalgo" class="channel-btn py-1.5 rounded-xl font-bold text-[10px] text-slate-600 hover:bg-white/60 text-center">
+                    Hidalgo
+                </button>
+                <button data-channel="saludos" class="channel-btn py-1.5 rounded-xl font-bold text-[10px] text-slate-600 hover:bg-white/60 text-center">
+                    Saludos
+                </button>
+            </div>
+        </div>
+
+        <!-- Nickname Input -->
+        <div class="p-2.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between text-xs">
+            <span class="font-bold text-slate-500">Apodo:</span>
+            <input type="text" id="input-nickname" value="Huasteco_Potosino" class="bg-white border border-slate-200 rounded-xl px-2 py-1 font-extrabold text-slate-800 text-xs w-36 text-right focus:outline-none focus:border-emerald-500">
+        </div>
+
+        <!-- Messages Viewport -->
+        <div id="chat-messages-viewport" class="flex-1 overflow-y-auto p-3 space-y-3 bg-slate-50/50">
+            <!-- Messages rendered dynamically -->
+        </div>
+
+        <!-- Message Form -->
+        <form id="chat-send-form" class="p-3 bg-white border-t border-slate-200 flex items-center gap-2">
+            <input type="text" id="input-chat-msg" autocomplete="off" placeholder="Escribe un mensaje o saludo..." class="flex-1 bg-slate-100 border border-slate-200 rounded-2xl px-3.5 py-2 text-xs font-semibold text-slate-800 focus:outline-none focus:bg-white focus:border-emerald-500">
+            <button type="submit" class="w-9 h-9 rounded-2xl bg-emerald-600 hover:bg-amber-400 hover:text-slate-900 text-white font-extrabold flex items-center justify-center shadow transition-all flex-shrink-0 text-xs">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </form>
+
+    </div>
+
+    <!-- Hidden HTML5 Audio Element -->
+    <audio id="audio-element" preload="none"></audio>
+
+    <script>
+        /*
+         * ==========================================
+         * 1. MODEL (RadioModel) - Application State
+         * ==========================================
+         */
+        class RadioModel {
+            constructor() {
+                // Stations Dataset with cover images and streams
+                this.stations = [
+                    {
+                        id: 'xochiatipan',
+                        name: 'Radio Xochiatipan 95.1 FM',
+                        streamUrl: 'https://live.turadiotv.com/8038/stream',
+                        location: 'Xochiatipán (Hidalgo / Límite SLP)',
+                        region: 'hgo',
+                        genre: 'Huapangos, Tradición y Noticias',
+                        imageName: 'imagen_radio_xochiatipan.jpg',
+                        imageUrl: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&auto=format&fit=crop&q=80',
+                        tagColor: 'bg-amber-500'
+                    },
+                    {
+                        id: 'betania',
+                        name: 'RADIO BETANIA',
+                        streamUrl: 'https://emiteradio.com/proxy/radiobetania?mp=/stream',
+                        location: 'Huasteca - San Luis Potosí',
+                        region: 'slp',
+                        genre: 'Música Cristiana y Mensajes de Esperanza',
+                        imageName: 'imagen_radio_betania.jpg',
+                        imageUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80',
+                        tagColor: 'bg-emerald-600'
+                    },
+                    {
+                        id: 'vida',
+                        name: 'RADIO VIDA',
+                        streamUrl: 'https://radiosprofecionalesmex.com/8020/stream',
+                        location: 'Huasteca Potosina / Hidalgo',
+                        region: 'slp',
+                        genre: 'Variedad, Contenido Familiar y Música',
+                        imageName: 'imagen_radio_vida.jpg',
+                        imageUrl: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&auto=format&fit=crop&q=80',
+                        tagColor: 'bg-teal-600'
+                    },
+                    {
+                        id: 'tu-voz',
+                        name: 'Tu Voz Multimedios Digital',
+                        streamUrl: 'https://turadiodigital.com/8002/;',
+                        location: 'San Luis Potosí',
+                        region: 'slp',
+                        genre: 'Noticias, En Vivo y Multimedios',
+                        imageName: 'imagen_tu_voz.jpg',
+                        imageUrl: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=600&auto=format&fit=crop&q=80',
+                        tagColor: 'bg-sky-600'
+                    },
+                    {
+                        id: 'xaltokaj',
+                        name: 'Xaltokaj Radio',
+                        streamUrl: 'https://stream.zeno.fm/1i8hpvxyxtcvv',
+                        location: 'Comunidad Huasteca (Vecinos)',
+                        region: 'hgo',
+                        genre: 'Música Tradicional y Sones Autóctonos',
+                        imageName: 'imagen_xaltokaj_radio.jpg',
+                        imageUrl: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=600&auto=format&fit=crop&q=80',
+                        tagColor: 'bg-rose-600'
+                    },
+                    {
+                        id: 'reyna',
+                        name: 'Radio Reyna',
+                        streamUrl: 'https://stream9.mexiserver.com/8064/;stream.mp3',
+                        location: 'Tamazunchale / Huasteca SLP',
+                        region: 'slp',
+                        genre: 'Éxitos Populares, Rancheras y Huapangos',
+                        imageName: 'imagen_radio_reyna.jpg',
+                        imageUrl: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=600&auto=format&fit=crop&q=80',
+                        tagColor: 'bg-purple-600'
+                    }
+                ];
+
+                // Playback & Modal State
+                this.currentStation = null;
+                this.isPlaying = false;
+                this.volume = 0.8;
+                this.isMuted = false;
+                this.isModalOpen = false;
+
+                // Carousel Banner State
+                this.currentSlide = 0;
+                this.totalSlides = 3;
+
+                // Filtering State
+                this.selectedRegion = 'all'; // 'all', 'slp', 'hgo'
+                this.searchQuery = '';
+
+                // Chatroom State
+                this.activeChannel = 'slp';
+                this.nickname = 'Huasteco_Potosino';
+                this.chatData = {
+                    'slp': [
+                        { user: 'Don_Mateo', text: '¡Un saludo a toda la gente hermosa de Ciudad Valles!', time: '14:20', tag: 'SLP' },
+                        { user: 'Lupita_Tamazunchale', text: 'Escuchando unos bonitos huapangos potosinos.', time: '14:25', tag: 'SLP' }
+                    ],
+                    'hidalgo': [
+                        { user: 'Beto_Huejutla', text: 'Saludos desde Huejutla a nuestros vecinos de San Luis.', time: '13:50', tag: 'HGO' }
+                    ],
+                    'saludos': [
+                        { user: 'Familia_Hernandez', text: 'Un abrazo para la familia en la Huasteca.', time: '12:10', tag: 'General' }
+                    ]
+                };
+            }
+
+            getFilteredStations() {
+                return this.stations.filter(station => {
+                    const matchesRegion = (this.selectedRegion === 'all') || (station.region === this.selectedRegion);
+                    const q = this.searchQuery.toLowerCase();
+                    const matchesSearch = station.name.toLowerCase().includes(q) ||
+                                          station.location.toLowerCase().includes(q) ||
+                                          station.genre.toLowerCase().includes(q);
+                    return matchesRegion && matchesSearch;
+                });
+            }
+        }
+
+        /*
+         * ==========================================
+         * 2. VIEW (RadioView) - User Interface
+         * ==========================================
+         */
+        class RadioView {
+            constructor() {
+                // Main Grid
+                this.stationsGrid = document.getElementById('stations-grid');
+                this.stationCountIndicator = document.getElementById('station-count-indicator');
+
+                // Player Modal Elements
+                this.playerModal = document.getElementById('player-modal');
+                this.playerModalCard = document.getElementById('player-modal-card');
+                this.modalStationImg = document.getElementById('modal-station-img');
+                this.modalStationBadge = document.getElementById('modal-station-badge');
+                this.modalStationName = document.getElementById('modal-station-name');
+                this.modalStationLocation = document.getElementById('modal-station-location');
+                this.modalStationGenre = document.getElementById('modal-station-genre');
+                this.modalPlayIcon = document.getElementById('modal-play-icon');
+                this.modalStatusText = document.getElementById('modal-status-text');
+                this.modalEqualizer = document.getElementById('modal-equalizer');
+                this.modalMuteIcon = document.getElementById('modal-mute-icon');
+
+                // Chat Drawer Elements
+                this.chatDrawer = document.getElementById('chat-drawer');
+                this.chatMessagesViewport = document.getElementById('chat-messages-viewport');
+
+                // HTML Audio Element
+                this.audioElement = document.getElementById('audio-element');
+            }
+
+            renderStations(stations, currentStation, isPlaying) {
+                this.stationsGrid.innerHTML = '';
+                this.stationCountIndicator.innerText = `${stations.length} Estaciones Disponibles`;
+
+                if (stations.length === 0) {
+                    this.stationsGrid.innerHTML = `
+                        <div class="col-span-full bg-white p-8 rounded-3xl text-center border border-slate-200 space-y-2">
+                            <i class="fa-solid fa-radio text-3xl text-slate-300"></i>
+                            <p class="text-xs font-bold text-slate-600">No se encontraron radios con ese filtro.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                stations.forEach(station => {
+                    const isCurrent = currentStation && currentStation.id === station.id;
+                    const card = document.createElement('div');
+                    
+                    card.className = `bg-white rounded-3xl overflow-hidden border ${isCurrent ? 'border-emerald-500 ring-2 ring-emerald-200' : 'border-slate-200/80'} shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group`;
+                    
+                    card.innerHTML = `
+                        <!-- Station Image Box -->
+                        <div class="relative h-44 bg-slate-100 overflow-hidden">
+                            <img src="${station.imageUrl}" alt="${station.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                            
+                            <!-- Region Badge -->
+                            <span class="absolute top-3 left-3 text-[9px] font-extrabold uppercase px-2.5 py-1 rounded-full text-white shadow ${station.tagColor}">
+                                ${station.region === 'slp' ? 'San Luis Potosí' : 'Hidalgo (Vecino)'}
+                            </span>
+
+                            <!-- Image Placeholder File Indicator -->
+                            <span class="absolute top-3 right-3 text-[8px] font-mono bg-black/60 text-white px-2 py-0.5 rounded backdrop-blur-sm">
+                                <i class="fa-solid fa-image mr-1"></i>${station.imageName}
+                            </span>
+
+                            <!-- Play Overlay Button -->
+                            <button data-action="select-station" data-id="${station.id}" class="absolute bottom-3 right-3 w-11 h-11 rounded-2xl ${isCurrent && isPlaying ? 'bg-amber-400 text-slate-900' : 'bg-emerald-600 text-white hover:bg-amber-400 hover:text-slate-900'} font-extrabold flex items-center justify-center shadow-lg transition-all group-hover:scale-110">
+                                <i class="fa-solid ${isCurrent && isPlaying ? 'fa-pause' : 'fa-play'} text-sm"></i>
+                            </button>
+                        </div>
+
+                        <!-- Card Information Body -->
+                        <div class="p-4 space-y-2 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-extrabold text-sm text-slate-900 group-hover:text-emerald-700 transition-colors line-clamp-1">${station.name}</h4>
+                                <p class="text-[11px] font-bold text-emerald-700 mt-0.5 flex items-center gap-1">
+                                    <i class="fa-solid fa-location-dot"></i> ${station.location}
+                                </p>
+                                <p class="text-[11px] font-medium text-slate-500 mt-1 line-clamp-2 leading-snug">
+                                    ${station.genre}
+                                </p>
+                            </div>
+
+                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-[10px] font-bold text-slate-400">Huasteca Radio</span>
+                                <button data-action="select-station" data-id="${station.id}" class="text-xs font-extrabold text-emerald-600 hover:text-emerald-800 flex items-center gap-1">
+                                    Reproducir <i class="fa-solid fa-circle-play text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+
+                    this.stationsGrid.appendChild(card);
+                });
+            }
+
+            openModal(station) {
+                this.modalStationImg.src = station.imageUrl;
+                this.modalStationName.innerText = station.name;
+                this.modalStationLocation.innerText = station.location;
+                this.modalStationGenre.innerText = station.genre;
+                this.modalStationBadge.innerText = station.region === 'slp' ? 'San Luis Potosí' : 'Hidalgo (Vecino)';
+
+                this.playerModal.classList.remove('opacity-0', 'pointer-events-none');
+                this.playerModalCard.classList.remove('scale-95');
+                this.playerModalCard.classList.add('scale-100');
+            }
+
+            closeModal() {
+                this.playerModal.classList.add('opacity-0', 'pointer-events-none');
+                this.playerModalCard.classList.remove('scale-100');
+                this.playerModalCard.classList.add('scale-95');
+            }
+
+            updatePlayerUI(isPlaying, station) {
+                if (isPlaying) {
+                    this.modalPlayIcon.className = "fa-solid fa-pause";
+                    this.modalStatusText.innerText = "Sintonizando en directo";
+                    document.querySelectorAll('.eq-bar').forEach(b => b.style.animationPlayState = 'running');
+                } else {
+                    this.modalPlayIcon.className = "fa-solid fa-play ml-1";
+                    this.modalStatusText.innerText = station ? "Pausado" : "Sin transmisión";
+                    document.querySelectorAll('.eq-bar').forEach(b => b.style.animationPlayState = 'paused');
+                }
+            }
+
+            renderCarousel(slideIndex) {
+                const slides = document.querySelectorAll('.banner-slide');
+                const dots = document.querySelectorAll('#carousel-dots button');
+
+                slides.forEach((slide, idx) => {
+                    if (idx === slideIndex) {
+                        slide.classList.remove('opacity-0');
+                        slide.classList.add('opacity-100');
+                    } else {
+                        slide.classList.remove('opacity-100');
+                        slide.classList.add('opacity-0');
+                    }
+                });
+
+                dots.forEach((dot, idx) => {
+                    if (idx === slideIndex) {
+                        dot.className = "w-3 h-3 rounded-full bg-amber-400 transition-all";
+                    } else {
+                        dot.className = "w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all";
+                    }
+                });
+            }
+
+            renderChat(messages, currentUser) {
+                this.chatMessagesViewport.innerHTML = '';
+
+                messages.forEach(msg => {
+                    const isUser = msg.user === currentUser;
+                    const msgDiv = document.createElement('div');
+                    msgDiv.className = `flex flex-col ${isUser ? 'items-end' : 'items-start'}`;
+                    
+                    msgDiv.innerHTML = `
+                        <div class="flex items-center gap-1 mb-0.5 px-1">
+                            <span class="text-[10px] font-extrabold ${isUser ? 'text-emerald-700' : 'text-slate-800'}">${msg.user}</span>
+                            <span class="text-[8px] bg-slate-200 text-slate-700 font-extrabold px-1 rounded">${msg.tag || 'SLP'}</span>
+                            <span class="text-[8px] text-slate-400">${msg.time}</span>
+                        </div>
+                        <div class="${isUser ? 'bg-emerald-600 text-white chat-bubble-user' : 'bg-white border border-slate-200 text-slate-800 chat-bubble-other'} p-2.5 text-xs shadow-sm font-medium leading-relaxed">
+                            ${msg.text}
+                        </div>
+                    `;
+                    this.chatMessagesViewport.appendChild(msgDiv);
+                });
+
+                this.chatMessagesViewport.scrollTop = this.chatMessagesViewport.scrollHeight;
+            }
+        }
+
+        /*
+         * ==========================================
+         * 3. CONTROLLER (RadioController) - Events
+         * ==========================================
+         */
+        class RadioController {
+            constructor(model, view) {
+                this.model = model;
+                this.view = view;
+
+                this.init();
+            }
+
+            init() {
+                this.updateView();
+
+                // Auto Banner Carousel Slider Timer
+                setInterval(() => {
+                    this.model.currentSlide = (this.model.currentSlide + 1) % this.model.totalSlides;
+                    this.view.renderCarousel(this.model.currentSlide);
+                }, 5000);
+
+                // Carousel Buttons
+                document.getElementById('btn-prev-slide').addEventListener('click', () => {
+                    this.model.currentSlide = (this.model.currentSlide - 1 + this.model.totalSlides) % this.model.totalSlides;
+                    this.view.renderCarousel(this.model.currentSlide);
+                });
+
+                document.getElementById('btn-next-slide').addEventListener('click', () => {
+                    this.model.currentSlide = (this.model.currentSlide + 1) % this.model.totalSlides;
+                    this.view.renderCarousel(this.model.currentSlide);
+                });
+
+                document.querySelectorAll('#carousel-dots button').forEach(dot => {
+                    dot.addEventListener('click', (e) => {
+                        const idx = parseInt(e.target.getAttribute('data-slide'));
+                        this.model.currentSlide = idx;
+                        this.view.renderCarousel(idx);
+                    });
+                });
+
+                // Audio Player Event Delegation
+                this.view.audioElement.addEventListener('playing', () => {
+                    this.model.isPlaying = true;
+                    this.view.updatePlayerUI(true, this.model.currentStation);
+                    this.updateView();
+                });
+
+                this.view.audioElement.addEventListener('pause', () => {
+                    this.model.isPlaying = false;
+                    this.view.updatePlayerUI(false, this.model.currentStation);
+                    this.updateView();
+                });
+
+                // Station Selection Event (Delegation on Grid)
+                document.addEventListener('click', (e) => {
+                    const btn = e.target.closest('[data-action="select-station"]');
+                    if (btn) {
+                        const stationId = btn.getAttribute('data-id');
+                        this.selectStationAndPlay(stationId);
+                    }
+                });
+
+                // Modal Control Events
+                document.getElementById('btn-close-modal').addEventListener('click', () => {
+                    this.view.closeModal();
+                });
+
+                document.getElementById('btn-modal-play').addEventListener('click', () => {
+                    this.togglePlay();
+                });
+
+                document.getElementById('modal-volume-slider').addEventListener('input', (e) => {
+                    const val = parseFloat(e.target.value);
+                    this.model.volume = val;
+                    this.view.audioElement.volume = val;
+                });
+
+                document.getElementById('btn-modal-mute').addEventListener('click', () => {
+                    this.model.isMuted = !this.model.isMuted;
+                    this.view.audioElement.muted = this.model.isMuted;
+                    this.view.modalMuteIcon.className = this.model.isMuted 
+                        ? "fa-solid fa-volume-xmark text-rose-500" 
+                        : "fa-solid fa-volume-high text-sm";
+                });
+
+                // Search Filter Event
+                document.getElementById('input-search').addEventListener('input', (e) => {
+                    this.model.searchQuery = e.target.value;
+                    this.updateView();
+                });
+
+                // Region Filter Buttons
+                document.querySelectorAll('.filter-region-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        this.model.selectedRegion = btn.getAttribute('data-region');
+
+                        document.querySelectorAll('.filter-region-btn').forEach(b => {
+                            if (b.getAttribute('data-region') === this.model.selectedRegion) {
+                                b.className = "filter-region-btn active-region text-xs font-extrabold px-4 py-2 rounded-2xl bg-emerald-600 text-white shadow-md shadow-emerald-600/20 transition-all flex-shrink-0";
+                            } else {
+                                b.className = "filter-region-btn text-xs font-bold px-4 py-2 rounded-2xl text-slate-600 hover:bg-slate-100 transition-all flex-shrink-0";
+                            }
+                        });
+
+                        this.updateView();
+                    });
+                });
+
+                // Chat Drawer Controls
+                document.getElementById('btn-open-chat').addEventListener('click', () => {
+                    this.view.chatDrawer.classList.remove('translate-x-full');
+                });
+
+                document.getElementById('btn-close-chat').addEventListener('click', () => {
+                    this.view.chatDrawer.classList.add('translate-x-full');
+                });
+
+                // Chat Channel Switcher
+                document.querySelectorAll('.channel-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const chan = btn.getAttribute('data-channel');
+                        this.model.activeChannel = chan;
+
+                        document.querySelectorAll('.channel-btn').forEach(b => {
+                            b.className = "channel-btn py-1.5 rounded-xl font-bold text-[10px] text-slate-600 hover:bg-white/60 text-center";
+                        });
+                        btn.className = "channel-btn active-channel py-1.5 rounded-xl font-extrabold text-[10px] bg-white text-slate-900 shadow-sm text-center";
+
+                        this.view.renderChat(this.model.chatData[chan] || [], this.model.nickname);
+                    });
+                });
+
+                // Chat Send Message
+                document.getElementById('chat-send-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const input = document.getElementById('input-chat-msg');
+                    const text = input.value.trim();
+                    if (!text) return;
+
+                    const nickInput = document.getElementById('input-nickname');
+                    if (nickInput.value.trim()) this.model.nickname = nickInput.value.trim();
+
+                    const now = new Date();
+                    const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+                    if (!this.model.chatData[this.model.activeChannel]) {
+                        this.model.chatData[this.model.activeChannel] = [];
+                    }
+
+                    this.model.chatData[this.model.activeChannel].push({
+                        user: this.model.nickname,
+                        text: text,
+                        time: timeStr,
+                        tag: 'SLP'
+                    });
+
+                    input.value = '';
+                    this.view.renderChat(this.model.chatData[this.model.activeChannel], this.model.nickname);
+                });
+
+                // Initial Chat Render
+                this.view.renderChat(this.model.chatData[this.model.activeChannel], this.model.nickname);
+            }
+
+            selectStationAndPlay(stationId) {
+                const station = this.model.stations.find(s => s.id === stationId);
+                if (!station) return;
+
+                if (this.model.currentStation && this.model.currentStation.id === stationId) {
+                    this.togglePlay();
+                } else {
+                    this.model.currentStation = station;
+                    this.view.audioElement.src = station.streamUrl;
+                    
+                    this.view.openModal(station);
+
+                    this.view.audioElement.play().then(() => {
+                        this.model.isPlaying = true;
+                        this.view.updatePlayerUI(true, station);
+                        this.updateView();
+                    }).catch(err => {
+                        console.warn("Playback error/note:", err);
+                        this.model.isPlaying = false;
+                        this.view.updatePlayerUI(false, station);
+                        this.updateView();
+                    });
+                }
+            }
+
+            togglePlay() {
+                if (!this.model.currentStation) return;
+
+                if (this.model.isPlaying) {
+                    this.view.audioElement.pause();
+                } else {
+                    this.view.audioElement.play().catch(e => console.error(e));
+                }
+            }
+
+            updateView() {
+                const filtered = this.model.getFilteredStations();
+                this.view.renderStations(filtered, this.model.currentStation, this.model.isPlaying);
+            }
+        }
+
+        // Initialize Application on Window Load
+        window.onload = function() {
+            const model = new RadioModel();
+            const view = new RadioView();
+            const controller = new RadioController(model, view);
+        };
+    </script>
+</body>
+</html>
